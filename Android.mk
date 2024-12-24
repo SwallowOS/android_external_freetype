@@ -1,20 +1,13 @@
 # this is now the default FreeType build for Android
 #
-ifndef USE_FREETYPE
-USE_FREETYPE := 2.7
-endif
 
-ifeq ($(USE_FREETYPE),2.7)
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
-# compile in ARM mode, since the glyph loader/renderer is a hotspot
-# when loading complex pages in the browser
-#
-LOCAL_ARM_MODE := arm
 
 LOCAL_SRC_FILES:= \
     src/base/ftbbox.c \
+    src/base/ftbdf.c \
     src/base/ftbitmap.c \
     src/base/ftfntfmt.c \
     src/base/ftfstype.c \
@@ -58,4 +51,4 @@ LOCAL_CFLAGS += -O2
 LOCAL_MODULE:= libft2
 
 include $(BUILD_SHARED_LIBRARY)
-endif
+
